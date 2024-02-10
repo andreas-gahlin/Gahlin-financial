@@ -1,9 +1,11 @@
+
 export interface Node {
   id: string
   frontmatter: {
     title: string
     description: string
-    date: Date
+    date: string
+    image: string
   }
   fields: {
     slug: string

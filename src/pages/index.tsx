@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Link, graphql } from 'gatsby';
+import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import { Data } from '../types/types';
@@ -14,16 +14,13 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
         <h1 className="mt-5 mb-4">Latest Blog Posts</h1>
         <div className="row">
           {posts.map(({ node: post }) => (
-            <div className="col-md-4 mb-4" key={post.id}>
-              <div className="card bg-dark text-white">
-                <div className="card-body">
-                  <h5 className="card-title">{post.frontmatter.title}</h5>
-                  <p className="card-text">{post.excerpt}</p>
-                  <Link to={post.fields.slug} className="btn btn-primary float-right">Read More</Link>        
-                </div>
-              </div>
-            </div>
-            <Post title={post.frontmatter.title} description={post.frontmatter.description} date={post.frontmatter.date} body={post.frontmatter.description}/>
+            <Post 
+              title={post.frontmatter.title} 
+              description={post.frontmatter.description} 
+              date={post.frontmatter.date} 
+              body={post.excerpt} 
+              path={post.fields.slug}
+              image={post.frontmatter.image}/>
           ))}
         </div>
       </div>
@@ -40,7 +37,8 @@ export const query = graphql`
           frontmatter {
             title
             description
-            date(formatString: "MMMM DD, YYYY")
+            date(formatString: "MMM Do YYYY")
+            image
           }
           fields {
             slug

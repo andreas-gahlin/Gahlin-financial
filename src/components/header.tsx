@@ -23,7 +23,6 @@ const Header: React.FC = () => {
         </button>
         <div className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}>
           <ul className="navbar-nav ms-auto">
-            <NavItem to="/" label="Home" toggleNav={toggleNav} />
             <NavItem to="/about" label="About" toggleNav={toggleNav} />
             <NavItem to="/contact" label="Contact" toggleNav={toggleNav} />
           </ul>

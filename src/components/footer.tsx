@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footer fixed-bottom py-3 bg-dark text-white">
+    <footer className="footer bottom py-3 bg-dark text-white">
       <div className="container">
         <div className="row">
           <div className="col-12 col-md-6">

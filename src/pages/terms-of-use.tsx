@@ -4,7 +4,7 @@ import Layout from '../components/layout';
 const TermsOfUsePage: React.FC = () => {
   return (
     <Layout>
-      <div className="container mt-5 test">
+      <div className="container mt-5">
         <h1>Terms of Use</h1>
         <p>These Terms of Use ("Terms") govern your use of [Your Blog Name] (the "Website") operated by [Your Company Name] ("us," "we," or "our").</p>
         

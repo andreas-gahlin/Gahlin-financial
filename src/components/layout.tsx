@@ -7,7 +7,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <div className="d-flex flex-column flex-grow-1 containerc text-black"> 
       <Header />
-      <main className="test min-vh-100">{children}</main>
+      <main className="min-vh-100">{children}</main>
       <Footer />
     </div>
   );
