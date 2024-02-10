@@ -5,8 +5,22 @@ const AboutPage: React.FC = () => {
   return (
     <Layout>
       <div className="container mt-5">
-        <h1>About Us</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla varius fringilla magna. Suspendisse potenti. Duis vel tortor et quam suscipit vehicula. Mauris eu diam nec nulla lacinia feugiat. Nam convallis felis et augue sodales, eget eleifend dolor fermentum.</p>
+        <div className="col-md-6">
+          <h2>About Me</h2>
+          <p>
+            Hi, I'm [Your Name]. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Nullam suscipit erat sed orci tristique, sit amet pellentesque lectus feugiat.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit erat sed orci
+            tristique, sit amet pellentesque lectus feugiat.
+          </p>
+        </div>
+        <div className="col-md-6">
+          <h2>Profile Picture</h2>
+          {/* TODO: add later <img src={profileImage} alt="Profile" className="img-fluid" />*/}
+        </div>
+        <hr className="my-4" />
       </div>
     </Layout>
   );

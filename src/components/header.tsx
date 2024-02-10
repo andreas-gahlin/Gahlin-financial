@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "gatsby";
-// import logo from '../images/gf.png'
 import { StaticImage } from "gatsby-plugin-image";
 
 const Header = () => {
@@ -48,6 +47,11 @@ const Header = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/contact">
                 Contact
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/legal">
+                Legal
               </Link>
             </li>
           </ul>
