@@ -20,7 +20,7 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
               date={post.frontmatter.date} 
               body={post.excerpt} 
               path={post.fields.slug}
-              image={post.frontmatter.image}/>
+              fluid={post.frontmatter.image.childImageSharp.fluid}/>
           ))}
         </div>
       </div>
@@ -38,7 +38,13 @@ export const query = graphql`
             title
             description
             date(formatString: "MMM Do YYYY")
-            image
+            image {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           fields {
             slug

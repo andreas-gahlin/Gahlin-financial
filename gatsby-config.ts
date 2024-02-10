@@ -10,6 +10,10 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    'gatsby-plugin-sharp',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-image',
+    'gatsby-image',
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-source-filesystem',
@@ -27,10 +31,6 @@ const config: GatsbyConfig = {
     },
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
-    'gatsby-plugin-image',
-    'gatsby-image',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
   ],
 }
 
