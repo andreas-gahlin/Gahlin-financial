@@ -3,6 +3,7 @@ import { Link, graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import { Data } from '../types/types';
+import Post from '../components/post'
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -22,6 +23,7 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
                 </div>
               </div>
             </div>
+            <Post title={post.frontmatter.title} description={post.frontmatter.description} date={post.frontmatter.date} body={post.frontmatter.description}/>
           ))}
         </div>
       </div>
