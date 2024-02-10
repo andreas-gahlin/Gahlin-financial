@@ -1,28 +1,22 @@
-import * as React from "react"
-import type { HeadFC, PageProps } from "gatsby"
-import Layout from '../component/layout'
-import { Link, graphql } from "gatsby"
+import * as React from 'react'
+import type { HeadFC, PageProps } from 'gatsby'
+import Layout from '../components/layout'
+import { Link, graphql } from 'gatsby'
+import Post from '../components/post'
+import { Data } from '../types/types'
 
-interface Node {
-  id: string;
-  frontmatter: {
-    title: string;
-  };
-  fields: {
-    slug: string;
-  };
-  excerpt: string;
-}
 
-interface Data {
-  allMarkdownRemark: {
-    edges: {
-      node: Node;
-    }[];
-  };
-}
+/*
+  <Post 
+    title={post.frontmatter.title}
+    description={post.frontmatter.description}
+    date={post.frontmatter.date}
+    path={post.frontmatter.path}
+    excerpt={post.excerpt}
+    />
+))}          
+*/
 
-// style={pageStyles}
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
 
@@ -37,7 +31,8 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
                 <div className="card-body">
                   <h5 className="card-title">{post.frontmatter.title}</h5>
                   <p className="card-text">{post.excerpt}</p>
-                  <Link to={post.fields.slug} className="btn btn-primary">Read More</Link>
+                  <a>{post.fields.slug}</a>
+                  <Link to={post.fields.slug} className="btn btn-primary float-right">Read More</Link>        
                 </div>
               </div>
             </div>
@@ -56,6 +51,8 @@ export const query = graphql`
           id
           frontmatter {
             title
+            description
+            date(formatString: "MMMM DD, YYYY")
           }
           fields {
             slug
