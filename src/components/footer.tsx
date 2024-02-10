@@ -38,21 +38,12 @@ const Footer: React.FC = () => {
           </div>
         </div>
         {/* Legal Information */}
-        <div className={`legal-info mt-3 ${isLegalOpen ? 'show' : ''}`}>
+        <div id="legalCollapse" className={`${isLegalOpen ? '' : 'accordion-collapse collapse legal-info mt-3'}`}>
           <div className="accordion-item">
             <h5 className="accordion-header">
-              <button
-                className="accordion-button collapsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target="#legalCollapse"
-                aria-expanded="false"
-                aria-controls="legalCollapse"
-              >
                 Legal Information
-              </button>
             </h5>
-            <div id="legalCollapse" className="accordion-collapse collapse">
+            <div >
               <div className="accordion-body">
                 <p>
                   The information provided on this blog is for informational purposes only and should not be considered as professional financial advice. Readers should consult with a qualified financial advisor or professional before making any financial decisions.

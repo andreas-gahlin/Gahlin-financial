@@ -5,9 +5,9 @@ import "../styles/global.scss";
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
-    <div className="layout-container d-flex flex-column min-vh-100  bg-light-gray text-white">
+    <div className="d-flex flex-column flex-grow-1 containerc text-black"> 
       <Header />
-      <main className="layout-container bg-light-gray text-black">{children}</main>
+      <main className="test min-vh-100">{children}</main>
       <Footer />
     </div>
   );

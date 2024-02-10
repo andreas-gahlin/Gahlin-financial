@@ -1,10 +1,23 @@
 /* src/styles/global.scss */
 @import '~bootstrap/scss/bootstrap';
 
+/* Import Playfair Display font */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
+/* Apply Playfair Display as the font-family for headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+}
+
 .bg-light-gray {
   background-color: #f5f5f5; /* Example of a lighter shade of gray */
 }
 
-.flex-grow-1 {
-  flex-grow: 1;
+/* Lighter text color based on Bootstrap's bg-dark */
+.lighter-text-dark {
+  background-color: #adb5bd; /* Base gray color from Bootstrap's bg-dark */
+}
+
+.test {
+  overflow-y: auto
 }
