@@ -1,22 +1,23 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import type { HeadFC, PageProps } from 'gatsby'
 import Layout from '../components/layout';
 
 interface Data {
   markdownRemark: {
-    post: {
       html: string;
       frontmatter: {
         title: string
-        description: string
         date: string
       }
-    }
+      fields: {
+        slug: string
+      }
   }
 }
 
-const BlogPostTemplate: React.FC<Data> = ({ markdownRemark }) => {
-  const { post } = markdownRemark;
+const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
+  const { markdownRemark: post } = data;
 
   return (
     <Layout>
@@ -33,13 +34,16 @@ const BlogPostTemplate: React.FC<Data> = ({ markdownRemark }) => {
   );
 };
 
-export const query = graphql`
-  query($slug: String!) {
+export const postQuery = graphql`
+  query ($slug: String!) {
     markdownRemark(fields: { slug: { eq: $slug } }) {
       html
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+      }
+      fields {
+        slug
       }
     }
   }

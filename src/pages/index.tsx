@@ -2,20 +2,8 @@ import * as React from 'react'
 import type { HeadFC, PageProps } from 'gatsby'
 import Layout from '../components/layout'
 import { Link, graphql } from 'gatsby'
-import Post from '../components/post'
 import { Data } from '../types/types'
 
-
-/*
-  <Post 
-    title={post.frontmatter.title}
-    description={post.frontmatter.description}
-    date={post.frontmatter.date}
-    path={post.frontmatter.path}
-    excerpt={post.excerpt}
-    />
-))}          
-*/
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -31,7 +19,6 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
                 <div className="card-body">
                   <h5 className="card-title">{post.frontmatter.title}</h5>
                   <p className="card-text">{post.excerpt}</p>
-                  <a>{post.fields.slug}</a>
                   <Link to={post.fields.slug} className="btn btn-primary float-right">Read More</Link>        
                 </div>
               </div>

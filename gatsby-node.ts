@@ -59,7 +59,6 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
   const resultData = result.data as Data;
   // Create pages for each markdown node
   resultData.allMarkdownRemark.nodes.forEach(node => {
-    console.log('node', JSON.stringify(node, null, 2));
     createPage({
       path: node.fields.slug, // Path for the page
       component: path.resolve('./src/templates/blog-post.tsx'), // Template component for the page
