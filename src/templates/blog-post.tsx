@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import type { HeadFC, PageProps } from 'gatsby'
+import type { PageProps } from 'gatsby'
 import Layout from '../components/layout';
 
 interface Data {
@@ -21,7 +21,8 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="container">
+      <div className="container bg-light-gray text-black py-3">
+        {/* Added bg-dark and text-white classes */}
         <article>
           <header>
             <h1 className="mt-5 mb-4">{post.frontmatter.title}</h1>

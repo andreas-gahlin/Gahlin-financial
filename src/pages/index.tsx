@@ -1,9 +1,8 @@
-import * as React from 'react'
-import type { HeadFC, PageProps } from 'gatsby'
-import Layout from '../components/layout'
-import { Link, graphql } from 'gatsby'
-import { Data } from '../types/types'
-
+import * as React from 'react';
+import { Link, graphql } from 'gatsby';
+import type { PageProps } from 'gatsby';
+import Layout from '../components/layout';
+import { Data } from '../types/types';
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
   const posts = data.allMarkdownRemark.edges;
@@ -15,7 +14,7 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
         <div className="row">
           {posts.map(({ node: post }) => (
             <div className="col-md-4 mb-4" key={post.id}>
-              <div className="card">
+              <div className="card bg-dark text-white">
                 <div className="card-body">
                   <h5 className="card-title">{post.frontmatter.title}</h5>
                   <p className="card-text">{post.excerpt}</p>
@@ -51,6 +50,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage
-
-export const Head: HeadFC = () => <title>Home Page</title>
+export default IndexPage;

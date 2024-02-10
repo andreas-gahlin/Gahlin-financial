@@ -1,2 +1,10 @@
 /* src/styles/global.scss */
 @import '~bootstrap/scss/bootstrap';
+
+.bg-light-gray {
+  background-color: #f5f5f5; /* Example of a lighter shade of gray */
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
