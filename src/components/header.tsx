@@ -1,64 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const [isNavOpen, setIsNavOpen] = useState(false);
+
+  const toggleNav = () => setIsNavOpen(!isNavOpen);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container">
-        {/* Logo */}
         <Link className="navbar-brand" to="/">
-        <StaticImage
-            src="../images/gf.png"
-            alt="Logo"
-            height={35}
-          />
+          <StaticImage src="../images/gf.png" alt="Logo" height={35} />
         </Link>
-        {/* Toggle button for mobile */}
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler ${isNavOpen ? "" : "collapsed"}`}
           type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
           aria-label="Toggle navigation"
+          onClick={toggleNav}
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        {/* Navigation links */}
-        <div className="collapse navbar-collapse justify-content-end" id="navbarNav">
-          <ul className="navbar-nav">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">
-                Home
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/about">
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/blog">
-                Blog
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/contact">
-                Contact
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link className="nav-link" to="/legal">
-                Legal
-              </Link>
-            </li>
+        <div className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}>
+          <ul className="navbar-nav ms-auto">
+            <NavItem to="/" label="Home" toggleNav={toggleNav} />
+            <NavItem to="/about" label="About" toggleNav={toggleNav} />
+            <NavItem to="/contact" label="Contact" toggleNav={toggleNav} />
           </ul>
         </div>
       </div>
     </nav>
   );
 };
+
+const NavItem: React.FC<{ to: string; label: string; toggleNav: () => void }> = ({ to, label, toggleNav }) => (
+  <li className="nav-item">
+    <Link className="nav-link" to={to} onClick={toggleNav}>
+      {label}
+    </Link>
+  </li>
+);
 
 export default Header;
