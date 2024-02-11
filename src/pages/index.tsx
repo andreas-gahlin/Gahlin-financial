@@ -28,9 +28,10 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
           <Col key={post.id} md="4">
             <Post 
               title={post.frontmatter.title} 
-              description={post.frontmatter.description} 
+              authorimage={post.frontmatter.authorimage.childImageSharp.fluid} 
               date={post.frontmatter.date} 
-              body={post.excerpt} 
+              author={post.frontmatter.author} 
+              tags={post.frontmatter.tags}
               path={post.fields.slug}
               fluid={post.frontmatter.image.childImageSharp.fluid}
             />
@@ -58,8 +59,17 @@ export const query = graphql`
           frontmatter {
             title
             description
+            author
+            tags
             date(formatString: "MMM Do YYYY")
             image {
+              childImageSharp {
+                fluid(maxWidth: 300) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+            authorimage {
               childImageSharp {
                 fluid(maxWidth: 300) {
                   ...GatsbyImageSharpFluid

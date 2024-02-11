@@ -5,7 +5,10 @@ export interface Node {
     title: string
     description: string
     date: string
+    author: string
+    tags: string[]
     image: ImageData; // Reference the ImageData interface for the image field
+    authorimage: ImageData; // Reference the ImageData interface for the image field
   }
   fields: {
     slug: string
