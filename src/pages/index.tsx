@@ -4,29 +4,47 @@ import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import { Data } from '../types/types';
 import Post from '../components/post';
+import { Container, Row, Col } from 'reactstrap';
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
-  const posts = data.allMarkdownRemark.edges;
+  const [visiblePosts, setVisiblePosts] = React.useState(3); // Initially display 3 posts
+  const [posts, setPosts] = React.useState(data.allMarkdownRemark.edges);
+
+  // Function to load more posts when scrolling
+  const loadMorePosts = () => {
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 3); // Increase by 3 posts
+  };
 
   return (
     <Layout>
-      <div className="container text-center">
-        <h1 className="mt-5 mb-4">Latest Blog Posts</h1>
-        {posts.map(({ node: post }) => (
-          <div key={post.id} className="row mb-4">
-            <div className="col mx-auto"> {/* Added mx-auto class */}
-              <Post 
-                title={post.frontmatter.title} 
-                description={post.frontmatter.description} 
-                date={post.frontmatter.date} 
-                body={post.excerpt} 
-                path={post.fields.slug}
-                fluid={post.frontmatter.image.childImageSharp.fluid}
-              />
-            </div>
-          </div>
+      <Container className="py-5">
+      <Row>
+        <Col>
+          <h4 className="mb-4">Latest Posts</h4>
+        </Col>
+      </Row>
+      <Row className="mb-4">
+        {posts.slice(0, visiblePosts).map(({ node: post }) => (
+          <Col key={post.id} md="4">
+            <Post 
+              title={post.frontmatter.title} 
+              description={post.frontmatter.description} 
+              date={post.frontmatter.date} 
+              body={post.excerpt} 
+              path={post.fields.slug}
+              fluid={post.frontmatter.image.childImageSharp.fluid}
+            />
+          </Col>
         ))}
-      </div>
+      </Row>
+        {visiblePosts < posts.length && ( // Render button if there are more posts to load
+          <div className="text-center mt-3">
+            <button className="btn btn-outline-dark" onClick={loadMorePosts}>
+              Load More
+            </button>
+          </div>
+        )}
+      </Container>
     </Layout>
   );
 };

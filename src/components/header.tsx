@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
+import { Container, Row, Col, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
 
 const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -8,36 +9,33 @@ const Header: React.FC = () => {
   const toggleNav = () => setIsNavOpen(!isNavOpen);
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
-      <div className="container">
-        <Link className="navbar-brand" to="/">
-          <StaticImage src="../images/gf.png" alt="Logo" height={35} />
-        </Link>
-        <button
-          className={`navbar-toggler ${isNavOpen ? "" : "collapsed"}`}
-          type="button"
-          aria-label="Toggle navigation"
-          onClick={toggleNav}
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-        <div className={`collapse navbar-collapse ${isNavOpen ? "show" : ""}`}>
-          <ul className="navbar-nav ms-auto">
-            <NavItem to="/about" label="About" toggleNav={toggleNav} />
-            <NavItem to="/contact" label="Contact" toggleNav={toggleNav} />
-          </ul>
-        </div>
-      </div>
-    </nav>
+    <Navbar expand="lg" dark color="dark">
+      <Container>
+        <Row className=" align-items-center">
+          <Col xs="7">
+            <NavbarBrand href="/" className="me-auto">
+              <StaticImage src="../images/gf.png" alt="Logo" height={35} />
+            </NavbarBrand>
+          </Col>
+          <Col xs="">
+            <NavbarToggler onClick={toggleNav} />
+          </Col>
+          <Col xs="">
+            <Collapse isOpen={isNavOpen} navbar>
+              <Nav className="ms-auto" navbar>
+                <NavItem>
+                  <Link to="/about" className="nav-link" onClick={toggleNav}>About</Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/contact" className="nav-link" onClick={toggleNav}>Contact</Link>
+                </NavItem>
+              </Nav>
+            </Collapse>
+          </Col>
+        </Row>
+      </Container>
+    </Navbar>
   );
 };
-
-const NavItem: React.FC<{ to: string; label: string; toggleNav: () => void }> = ({ to, label, toggleNav }) => (
-  <li className="nav-item">
-    <Link className="nav-link" to={to} onClick={toggleNav}>
-      {label}
-    </Link>
-  </li>
-);
 
 export default Header;
