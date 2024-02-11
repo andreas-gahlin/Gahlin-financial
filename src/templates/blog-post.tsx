@@ -1,19 +1,19 @@
 import React from 'react';
 import { graphql } from 'gatsby';
-import type { PageProps } from 'gatsby'
+import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 
 interface Data {
   markdownRemark: {
       html: string;
       frontmatter: {
-        title: string
-        date: string
-      }
+        title: string;
+        date: string;
+      };
       fields: {
-        slug: string
-      }
-  }
+        slug: string;
+      };
+  };
 }
 
 const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
@@ -21,7 +21,7 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
 
   return (
     <Layout>
-      <div className="container bg-light-gray text-black py-3">
+      <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '50%' }}>
         {/* Added bg-dark and text-white classes */}
         <article>
           <header>
