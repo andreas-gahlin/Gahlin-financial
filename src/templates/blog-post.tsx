@@ -2,6 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
+import { ImageData } from '../types/types';
 
 interface Data {
   markdownRemark: {
@@ -9,6 +10,8 @@ interface Data {
       frontmatter: {
         title: string;
         date: string;
+        image: ImageData
+        authorimage: ImageData
       };
       fields: {
         slug: string;
@@ -20,7 +23,7 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
   const { markdownRemark: post } = data;
 
   return (
-    <Layout>
+    <Layout showWelcometext={true}>
       <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '50%' }}>
         {/* Added bg-dark and text-white classes */}
         <article>
@@ -42,6 +45,21 @@ export const postQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        author
+        image {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        authorimage {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       fields {
         slug

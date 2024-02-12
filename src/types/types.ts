@@ -17,7 +17,7 @@ export interface Node {
 }
 
 // Define TypeScript types/interfaces
-interface ImageData {
+export interface ImageData {
   childImageSharp: {
     fluid: any; // Adjust this type according to your specific needs
   };

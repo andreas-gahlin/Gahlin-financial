@@ -4,12 +4,17 @@ import Footer from './footer';
 import WelcomePage from './welcome'
 import '../styles/global.scss';
 
-const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
+interface Data {
+  showWelcometext?: boolean;
+  
+}
+
+const Layout: React.FC<React.PropsWithChildren<Data>> = ({ children, showWelcometext }) => {
   return (
     <div className="text-black"> 
       <header>
         <Header />
-        <WelcomePage />
+        {!showWelcometext && <WelcomePage />}
       </header>
       <main className="min-vh-100">{children}</main>
       <Footer />
