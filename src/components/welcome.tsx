@@ -1,7 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from 'reactstrap';
 
-const WelcomePage: React.FC = () => {
+interface Data {
+  authorimage?: any
+  author?: string
+}
+
+const WelcomePage: React.FC<Data> = ({authorimage, author}) => {
   return (
     <Container fluid className="bg-light-gray py-3">
       <div className="container">

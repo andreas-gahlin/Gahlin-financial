@@ -5,13 +5,13 @@ import Image from "gatsby-image";
 import slugify from 'slugify';
 
 interface Data {
-    title: string;
-    date: string;
-    authorimage: any;
-    author: string;
-    tags: string[];
-    path: string;
-    fluid: any;
+    title: string
+    date: string
+    authorimage: any
+    author: string
+    tags: string[]
+    path: string
+    fluid: any
 }
 
 const Post: React.FC<Data> = ({ title, date, authorimage, author, tags, path, fluid }) => {
