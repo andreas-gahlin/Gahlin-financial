@@ -65,3 +65,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 
+.badge {
+  position: relative;
+  // transition: background-color 0.3s ease; /* Smooth transition effect for background color */
+}
+
+.badge:hover {
+  background-color: rgba(245, 245, 245, 0.95); /* Slightly lighter gray background color with reduced opacity */
+}
+
+.badge:hover .badge-title,
+.badge:hover .badge-subtitle,
+.badge:hover .badge-description {
+  text-decoration: underline; /* Add underline decoration to the text on hover */
+  text-decoration-color: #333; /* Match the color of the text */
+  text-decoration-thickness: 1px; /* Set the thickness of the underline */
+  transition: text-decoration-color 0.3s ease, text-decoration-thickness 0.3s ease; /* Smooth transition effect for text decoration properties */
+}
+

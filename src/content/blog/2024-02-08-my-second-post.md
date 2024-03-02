@@ -8,6 +8,7 @@ authorimage: '../../images/andyg.png'
 tags:
 - Finans
 - Placeringar
+- Microsoft
 ---
 
 Welcome to my first blog post! This is where I share my thoughts on various topics.

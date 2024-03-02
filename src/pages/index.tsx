@@ -7,7 +7,7 @@ import Post from '../components/post';
 import { Container, Row, Col } from 'reactstrap';
 import PortfolioSummary from '../components/portfoliopage'; // Import the PortfolioSummary component
 import slugify from 'slugify';
-import Subject from '../components/author';
+import Subject from '../components/subject';
 
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
@@ -53,13 +53,16 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
         )}
 
         <Row className="mb-4">
-          {tags.map((tag, index) => (
-            <Col key={index} className="mb-2"> {/* Add a margin bottom for spacing */}
-              <Link to={slugify(tag, { lower: true })}>
-                <Subject tag={tag} />
-              </Link>
-            </Col>
-          ))}
+          <Col>
+            <h5>Subjects:</h5> {/* Add a title for the tags */}
+            <div style={{ display: 'flex', flexWrap: 'wrap' }}> {/* Use flexbox to wrap items */}
+              {tags.map((tag, index) => (
+                <Link key={index} to={slugify(tag, { lower: true })} style={{ marginRight: '1px' }}> {/* Add style for margin */}
+                  <Subject tag={tag} />
+                </Link>
+              ))}
+            </div>
+          </Col>
         </Row>
 
         <PortfolioSummary /> {/* Add the PortfolioSummary component */}

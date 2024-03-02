@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import { ImageData } from '../types/types';
+import WelcomePage from '../components/welcome';
 
 interface Data {
   markdownRemark: {
@@ -24,6 +25,7 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
 
   return (
     <Layout showWelcometext={true}>
+      <WelcomePage author={post.frontmatter.title} authorimage={post.frontmatter.authorimage} ></WelcomePage>
       <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '50%' }}>
         {/* Added bg-dark and text-white classes */}
         <article>
