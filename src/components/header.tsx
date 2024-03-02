@@ -14,7 +14,7 @@ const Header: React.FC = () => {
         <Row className=" align-items-center">
           <Col xs="7">
             <NavbarBrand href="/" className="me-auto">
-              <StaticImage src="../images/gf.png" alt="Logo" height={35} />
+              <StaticImage src="../images/gf_edit.png" alt="Logo" height={35} />
             </NavbarBrand>
           </Col>
           <Col xs="">
