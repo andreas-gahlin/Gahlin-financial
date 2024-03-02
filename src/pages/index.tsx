@@ -1,50 +1,68 @@
 import * as React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import type { PageProps } from 'gatsby';
 import Layout from '../components/layout';
 import { Data } from '../types/types';
 import Post from '../components/post';
 import { Container, Row, Col } from 'reactstrap';
+import PortfolioSummary from '../components/portfoliopage'; // Import the PortfolioSummary component
+import slugify from 'slugify';
+import Subject from '../components/author';
+
 
 const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
-  const [visiblePosts, setVisiblePosts] = React.useState(3); // Initially display 3 posts
-  const [posts, setPosts] = React.useState(data.allMarkdownRemark.edges);
+  const [visiblePosts, setVisiblePosts] = React.useState(3);
+  const [posts,] = React.useState(data.allMarkdownRemark.edges);
+  
+  const tagsSet = new Set(posts.flatMap(({ node: post }) => post.frontmatter.tags));
+  const tags = Array.from(tagsSet);
 
-  // Function to load more posts when scrolling
   const loadMorePosts = () => {
-    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 3); // Increase by 3 posts
+    setVisiblePosts(prevVisiblePosts => prevVisiblePosts + 3);
   };
 
   return (
     <Layout>
       <Container className="py-5">
-      <Row>
-        <Col>
-          <h4 className="mb-4">Latest Posts</h4>
-        </Col>
-      </Row>
-      <Row className="mb-4">
-        {posts.slice(0, visiblePosts).map(({ node: post }) => (
-          <Col key={post.id} md="4">
-            <Post 
-              title={post.frontmatter.title} 
-              authorimage={post.frontmatter.authorimage.childImageSharp.fluid} 
-              date={post.frontmatter.date} 
-              author={post.frontmatter.author} 
-              tags={post.frontmatter.tags}
-              path={post.fields.slug}
-              fluid={post.frontmatter.image.childImageSharp.fluid}
-            />
+        <Row>
+          <Col>
+            <h4 className="mb-4">Latest Posts</h4>
           </Col>
-        ))}
-      </Row>
-        {visiblePosts < posts.length && ( // Render button if there are more posts to load
-          <div className="text-center mt-3">
+        </Row>
+        <Row className="mb-4">
+          {posts.slice(0, visiblePosts).map(({ node: post }) => (
+            <Col key={post.id} md="4">
+              <Post 
+                title={post.frontmatter.title} 
+                authorimage={post.frontmatter.authorimage.childImageSharp.fluid} 
+                date={post.frontmatter.date} 
+                author={post.frontmatter.author} 
+                tags={post.frontmatter.tags}
+                path={post.fields.slug}
+                fluid={post.frontmatter.image.childImageSharp.fluid}
+              />
+            </Col>
+          ))}
+        </Row>
+        {visiblePosts < posts.length && (
+          <div className="text-center mb-4">
             <button className="btn btn-outline-dark" onClick={loadMorePosts}>
               Load More
             </button>
           </div>
         )}
+
+        <Row className="mb-4">
+          {tags.map((tag, index) => (
+            <Col key={index} className="mb-2"> {/* Add a margin bottom for spacing */}
+              <Link to={slugify(tag, { lower: true })}>
+                <Subject tag={tag} />
+              </Link>
+            </Col>
+          ))}
+        </Row>
+
+        <PortfolioSummary /> {/* Add the PortfolioSummary component */}
       </Container>
     </Layout>
   );

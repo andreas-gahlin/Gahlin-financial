@@ -10,11 +10,19 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: 'icon',
+        icon: `src/images/icon.png`
+      }
+    },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     'gatsby-plugin-image',
     'gatsby-image',
     'gatsby-plugin-react-helmet',
+    
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -25,10 +33,11 @@ const config: GatsbyConfig = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
+        name: 'blogposts',
         path: `${__dirname}/src/content/blog`
       }
     },
+  
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
   ],

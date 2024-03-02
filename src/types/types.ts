@@ -1,19 +1,22 @@
 
 export interface Node {
   id: string
-  frontmatter: {
-    title: string
-    description: string
-    date: string
-    author: string
-    tags: string[]
-    image: ImageData; // Reference the ImageData interface for the image field
-    authorimage: ImageData; // Reference the ImageData interface for the image field
-  }
+  frontmatter: Frontmatter
   fields: {
     slug: string
   }
   excerpt: string;
+}
+
+export interface Frontmatter {
+  title: string
+  description: string
+  date: string
+  author: string
+  tags: string[]
+  image: ImageData; // Reference the ImageData interface for the image field
+  authorimage: ImageData; // Reference the ImageData interface for the image field
+
 }
 
 // Define TypeScript types/interfaces
