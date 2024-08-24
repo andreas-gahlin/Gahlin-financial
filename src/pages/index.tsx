@@ -57,9 +57,11 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
             <h5>Subjects:</h5> {/* Add a title for the tags */}
             <div style={{ display: 'flex', flexWrap: 'wrap' }}> {/* Use flexbox to wrap items */}
               {tags.map((tag, index) => (
+                <div>
                 <Link key={index} to={slugify(tag, { lower: true })} style={{ marginRight: '1px' }}> {/* Add style for margin */}
                   <Subject tag={tag} />
                 </Link>
+                </div>
               ))}
             </div>
           </Col>

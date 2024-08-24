@@ -8,9 +8,11 @@ export interface Node {
     title: string
     description: string
     date: Date
+    tags: string[]
   }
   fields: {
     slug: string
+    tags: string[]
   }
   excerpt: string;
 }
@@ -44,6 +46,9 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
     query {
       allMarkdownRemark {
         nodes {
+          frontmatter {
+            tags
+          }
           fields {
             slug
           }
@@ -67,5 +72,29 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
         slug: node.fields.slug,
       },
     });
+    node.frontmatter.tags.forEach(tag => {
+      createPage({
+        path: tag.toLowerCase(), // Path for the page
+        component: path.resolve('./src/templates/search-tags.tsx'), // Template component for the page
+        context: {
+          // Additional data to pass to the template component
+          tag
+        },
+      });
+    })
+    
+    
   });
 };
+/*
+node.fields.tags.forEach(tag => {
+      createPage({
+        path: tag, // Path for the page
+        component: path.resolve('./src/templates/search-tags.tsx'), // Template component for the page
+        context: {
+          // Additional data to pass to the template component
+          tag
+        },
+      });
+    })
+    */
