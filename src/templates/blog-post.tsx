@@ -25,6 +25,7 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
 
   return (
     <Layout showWelcometext={true}>
+      {/*<div>I was here :D {JSON.stringify(data, null, 2)}</div>*/}
       <WelcomePage author={post.frontmatter.title} authorimage={post.frontmatter.authorimage} ></WelcomePage>
       <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '50%' }}>
         {/* Added bg-dark and text-white classes */}

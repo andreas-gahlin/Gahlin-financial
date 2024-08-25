@@ -26,6 +26,8 @@ export interface Data {
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // Add fields to MarkdownRemark nodes
+  console.log('-------------> node: ', node);
+  console.log('-------------> action: ', node);
   if (node.internal.type === 'MarkdownRemark') {
     const slugNode = node as any;
     const slug =   slugify(slugNode.frontmatter.title, { lower: true });
@@ -86,15 +88,3 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
     
   });
 };
-/*
-node.fields.tags.forEach(tag => {
-      createPage({
-        path: tag, // Path for the page
-        component: path.resolve('./src/templates/search-tags.tsx'), // Template component for the page
-        context: {
-          // Additional data to pass to the template component
-          tag
-        },
-      });
-    })
-    */

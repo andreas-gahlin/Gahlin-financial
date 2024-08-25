@@ -24,6 +24,9 @@ const Header: React.FC = () => {
             <Collapse isOpen={isNavOpen} navbar>
               <Nav className="ms-auto" navbar>
                 <NavItem>
+                  <Link to="/about" className="nav-link" onClick={toggleNav}>Portfilio</Link>
+                </NavItem>
+                <NavItem>
                   <Link to="/about" className="nav-link" onClick={toggleNav}>About</Link>
                 </NavItem>
                 <NavItem>

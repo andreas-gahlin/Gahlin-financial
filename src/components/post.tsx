@@ -15,6 +15,7 @@ interface Data {
 }
 
 const Post: React.FC<Data> = ({ title, date, authorimage, author, tags, path, fluid }) => {
+  console.log('path', path)
   return (
     <Link to={path} className="text-decoration-none">
       <Card className="blog-card" style={{ position: 'relative', borderRadius: '8px', overflow: 'hidden' }}>
