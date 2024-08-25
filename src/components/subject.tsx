@@ -18,7 +18,7 @@ const CustomBadge: React.FC<SubjectData> = ({ tag }) => {
 
   return (
     
-      <Link to={`/${slugify(tag, { lower: true })}`} className="text-decoration-none text-dark">
+      <Link to={`/subjects/${slugify(tag, { lower: true })}`} className="text-decoration-none text-dark">
         <div className='badge' style={{ margin: 0, padding: 0 }}>
         <Badge color="white" style={customBadgeStyle}>{tag}</Badge>
         </div>

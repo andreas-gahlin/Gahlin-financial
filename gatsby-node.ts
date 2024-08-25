@@ -67,7 +67,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
   // Create pages for each markdown node
   resultData.allMarkdownRemark.nodes.forEach(node => {
     createPage({
-      path: node.fields.slug, // Path for the page
+      path: `/blogposts/${node.fields.slug}`, // Path for the page
       component: path.resolve('./src/templates/blog-post.tsx'), // Template component for the page
       context: {
         // Additional data to pass to the template component
@@ -76,7 +76,7 @@ export const createPages: GatsbyNode['createPages'] = async ({ graphql, actions 
     });
     node.frontmatter.tags.forEach(tag => {
       createPage({
-        path: tag.toLowerCase(), // Path for the page
+        path: `/subjects/${tag.toLowerCase()}`, // Path for the page
         component: path.resolve('./src/templates/search-tags.tsx'), // Template component for the page
         context: {
           // Additional data to pass to the template component
