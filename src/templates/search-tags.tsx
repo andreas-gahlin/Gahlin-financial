@@ -44,7 +44,6 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
         <Row className="mb-4">
           {edges.map(({ node: post }) => (
             <Col key={post.id} md="4">
-              <div>{post.fields.slug}</div>
               <Post 
                 title={post.frontmatter.title} 
                 authorimage={post.frontmatter.authorimage.childImageSharp.fluid} 

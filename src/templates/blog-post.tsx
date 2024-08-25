@@ -12,6 +12,7 @@ interface Data {
         title: string;
         date: string;
         image: ImageData
+        author: string
         authorimage: ImageData
       };
       fields: {
@@ -25,14 +26,25 @@ const BlogPostTemplate: React.FC<PageProps<Data>> = ({ data }) => {
 
   return (
     <Layout showWelcometext={true}>
-      {/*<div>I was here :D {JSON.stringify(data, null, 2)}</div>*/}
       <WelcomePage author={post.frontmatter.title} authorimage={post.frontmatter.authorimage} ></WelcomePage>
-      <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '50%' }}>
-        {/* Added bg-dark and text-white classes */}
+      <div className="container bg-light-gray text-black py-3 mx-auto" style={{ maxWidth: '70%' }}>
         <article>
           <header>
-            <h1 className="mt-5 mb-4">{post.frontmatter.title}</h1>
-            <p className="text-muted">Published on: {post.frontmatter.date}</p>
+          <h1 className="mt-5 mb-4">{post.frontmatter.title}</h1>
+            <div className="author-info d-flex align-items-center mb-4">
+              <div className="author-image" style={{ marginRight: '10px' }}>
+                <img 
+                  src={post.frontmatter.authorimage.childImageSharp.fluid.src} 
+                  alt={post.frontmatter.author} 
+                  className="rounded-circle" 
+                  style={{ width: '50px', height: '50px' }} 
+                />
+              </div>
+              <div>
+                <p className="mb-0">Written by {post.frontmatter.author}</p>
+                <p className="text-muted mb-0">Published on {post.frontmatter.date}</p>
+              </div>
+            </div>
           </header>
           <section dangerouslySetInnerHTML={{ __html: post.html }} />
         </article>

@@ -26,8 +26,6 @@ export interface Data {
 export const onCreateNode: GatsbyNode['onCreateNode'] = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   // Add fields to MarkdownRemark nodes
-  console.log('-------------> node: ', node);
-  console.log('-------------> action: ', node);
   if (node.internal.type === 'MarkdownRemark') {
     const slugNode = node as any;
     const slug =   slugify(slugNode.frontmatter.title, { lower: true });

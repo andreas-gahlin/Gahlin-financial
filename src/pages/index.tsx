@@ -5,7 +5,7 @@ import Layout from '../components/layout';
 import { Data } from '../types/types';
 import Post from '../components/post';
 import { Container, Row, Col } from 'reactstrap';
-import PortfolioSummary from '../components/portfoliopage'; // Import the PortfolioSummary component
+import PortfolioSummary from './portfolio'; // Import the PortfolioSummary component
 import slugify from 'slugify';
 import Subject from '../components/subject';
 
@@ -67,7 +67,7 @@ const IndexPage: React.FC<PageProps<Data>> = ({ data }) => {
           </Col>
         </Row>
 
-        <PortfolioSummary /> {/* Add the PortfolioSummary component */}
+        {/* Add the PortfolioSummary component <PortfolioSummary /> */}
       </Container>
     </Layout>
   );

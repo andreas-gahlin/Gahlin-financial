@@ -1,7 +1,8 @@
 import React from 'react';
-import PortfolioChart from './portfoliochart';
+import PortfolioChart from '../components/portfoliochart';
+import Layout from '../components/layout';
 
-const PortfolioPage: React.FC = () => {
+const PortfolioPage: React.FC= () => {
   // Sample portfolio data
   const portfolioData = {
     labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May'],
@@ -28,10 +29,13 @@ const PortfolioPage: React.FC = () => {
   };
 
   return (
-    <div>
-      <h2>Portfolio Value and Stock Growth Over Time</h2>
-      <PortfolioChart data={portfolioData} />
-    </div>
+    <Layout>
+      <div>
+        <h2>Portfolio Value and Stock Growth Over Time</h2>
+        <PortfolioChart data={portfolioData} />
+      </div>
+    </Layout>
+    
   );
 };
 

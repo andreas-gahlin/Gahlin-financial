@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
-import { Container, Row, Col, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem, NavLink } from 'reactstrap';
+import { Container, Row, Col, Navbar, NavbarBrand, NavbarToggler, Collapse, Nav, NavItem } from 'reactstrap';
 
 const Header: React.FC = () => {
   const [isNavOpen, setIsNavOpen] = useState(false);
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
             <Collapse isOpen={isNavOpen} navbar>
               <Nav className="ms-auto" navbar>
                 <NavItem>
-                  <Link to="/about" className="nav-link" onClick={toggleNav}>Portfilio</Link>
+                  <Link to="/portfolio" className="nav-link" onClick={toggleNav}>Portfolio</Link>
                 </NavItem>
                 <NavItem>
                   <Link to="/about" className="nav-link" onClick={toggleNav}>About</Link>
