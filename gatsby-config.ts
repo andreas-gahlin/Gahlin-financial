@@ -37,7 +37,10 @@ const config: GatsbyConfig = {
         path: `${__dirname}/src/content/blog`
       }
     },
-  
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: { extensions: ['.mdx', '.md']},
+    },
     'gatsby-plugin-sass',
     'gatsby-transformer-remark',
   ],
