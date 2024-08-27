@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 
-const Task: React.FC<{ title: string, description: string, rewardPoints: number, onComplete: any }> = ({ title, description, rewardPoints, onComplete }) => {
+const Task:  React.FC<{ title: string, description: string, basePoints: number, difficulty: any,  rewardPoints: number, onComplete: any }> 
+    = ({ title, description, basePoints, difficulty, onComplete }) => {
   const [isCompleted, setIsCompleted] = useState(false);
+
+  const rewardPoints = basePoints * difficulty;
 
   const handleComplete = () => {
     setIsCompleted(true);

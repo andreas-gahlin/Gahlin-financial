@@ -1,29 +1,27 @@
 import React from 'react';
-import { PieChart, Pie, Cell, Tooltip, Legend } from 'recharts';
+import { PieChart, Pie, Tooltip, Cell } from 'recharts';
 
-const ExpenseChart:  React.FC<{ data: any }> = ({ data }) => {
-  const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
+const ExpenseChart: React.FC<{ data: any }>  = ({ data }) => {
   return (
     <PieChart width={400} height={400}>
       <Pie
         data={data}
-        cx={200}
-        cy={200}
-        innerRadius={60}
+        cx="50%"
+        cy="50%"
         outerRadius={120}
         fill="#8884d8"
-        paddingAngle={5}
         dataKey="value"
       >
-        {data.map((entry: any, index:number) => (
+        {data.map((entry:any, index:number) => (
           <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
         ))}
       </Pie>
       <Tooltip />
-      <Legend />
     </PieChart>
   );
 };
 
 export default ExpenseChart;
+
